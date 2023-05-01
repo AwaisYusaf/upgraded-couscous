@@ -31,3 +31,13 @@
     )
     rgb(var(--background-start-rgb));
 } */
+.swiper {
+  width: 600px;
+  height: 300px;
+  background-color: yellow;
+  padding:10px;
+}
+.swiper-slide{
+  padding:20px;
+  background-color: red;
+}
