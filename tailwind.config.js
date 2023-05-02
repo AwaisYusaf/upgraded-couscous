@@ -14,6 +14,7 @@ module.exports = {
       },
       colors: {
         "custom-pink": "rgb(255, 233, 212)",
+        "custom-pink-2": "#e6a685",
       },
     },
   },

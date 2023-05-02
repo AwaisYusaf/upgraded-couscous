@@ -57,7 +57,7 @@ function Header({}: Props) {
         </div>
       </div>
 
-      <nav className="flex justify-center items-center space-x-3">
+      <nav className="hidden lg:flex justify-center items-center space-x-3">
         <Link href={"/"} className="hover:underline">
           Home
         </Link>
