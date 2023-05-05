@@ -4,7 +4,7 @@ type Props = { imgUrl: string; soldOut: boolean; title: string; price: string };
 
 function ProductCard({ data }: { data: Props }) {
   return (
-    <article className="relative overflow-hidden group flex flex-col space-y-2 w-full">
+    <article className="relative overflow-hidden group flex flex-col space-y-2 w-full z-10">
       <div className="overflow-hidden">
         <Image
           src="/assets/product-card.webp"

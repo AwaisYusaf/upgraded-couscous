@@ -18,7 +18,6 @@ export default function Home() {
         <PatreonProducts />
         <ExclusiveAccess />
         <ReadMore />
-        <Footer />
       </main>
     </>
   );

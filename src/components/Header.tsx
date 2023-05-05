@@ -1,12 +1,31 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {};
+type Props = any;
 
 function Header({}: Props) {
+  const [showAll, setShowAll] = useState(false);
+  const dropdown = useRef(null);
+
+  if (document !== undefined) {
+    document.addEventListener("click", (e) => {
+      //@ts-ignore
+      if (e.target.id != "all-btn") {
+        if (dropdown.current) {
+          setShowAll(false);
+        }
+      }
+    });
+  }
+
+  function handleClick() {
+    setShowAll(!showAll);
+  }
+
   return (
-    <header>
+    <header className="relative z-50">
       <div className="bg-custom-pink flex justify-center items-center cursor-pointer space-x-5 py-2 shadow shadow-gray-300">
         <p className="text-sm">
           EU & UK customers! Please visit my Etsy shop to order.
@@ -61,25 +80,59 @@ function Header({}: Props) {
         <Link href={"/"} className="hover:underline">
           Home
         </Link>
-        <Link href={"/"} className="hover:underline">
+        <Link href={"/new-arrival"} className="hover:underline">
           New
         </Link>
         <Link href={"/"} className="hover:underline">
           Handmade
         </Link>
-        <Link href={"/"} className="hover:underline">
+        <button
+          className="hover:underline"
+          onClick={handleClick}
+          id="all-btn"
+          ref={dropdown}
+        >
           All
-        </Link>
+        </button>
         <Link href={"/"} className="hover:underline">
           Sale
         </Link>
         <Link href={"/about"} className="hover:underline">
           About
         </Link>
-        <Link href={"/"} className="hover:underline">
+        <Link href={"/faqs"} className="hover:underline">
           FAQ
         </Link>
       </nav>
+      <div
+        className={`w-full h-[250px] justify-center absolute bg-white shadow-md ${
+          showAll ? "flex" : "hidden"
+        }`}
+      >
+        <div className="w-[85%] flex flex-col space-y-4 py-4 z-50">
+          <Link href="/collections/stickers" className="hover:underline w-fit">
+            Stickers
+          </Link>
+          <Link
+            href="/collections/washi-tapes"
+            className="hover:underline w-fit"
+          >
+            Washi Tapes
+          </Link>
+          <Link href="/collections/prints" className="hover:underline w-fit">
+            Prints
+          </Link>
+          <Link href="/collections/earrings" className="hover:underline w-fit">
+            Earrings
+          </Link>
+          <Link
+            href="/collections/paper-products"
+            className="hover:underline w-fit"
+          >
+            Paper Products
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }
