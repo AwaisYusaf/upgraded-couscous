@@ -73,7 +73,7 @@ function Header({}: Props) {
         <Link href={"/"} className="hover:underline">
           Sale
         </Link>
-        <Link href={"/"} className="hover:underline">
+        <Link href={"/about"} className="hover:underline">
           About
         </Link>
         <Link href={"/"} className="hover:underline">
