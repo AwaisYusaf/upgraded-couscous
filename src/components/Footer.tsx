@@ -7,8 +7,8 @@ type Props = {};
 function Footer({}: Props) {
   return (
     <footer className="bg-custom-pink py-8">
-      <div className="w-[95%] lg:w-[85%] mx-auto grid lg:grid-cols-[repeat(3,auto)] gap-y-10 justify-between">
-        <div className="flex flex-col space-y-5">
+      <div className="w-[95%] lg:w-[85%] lg:mx-auto mx-0 grid grid-cols-1 lg:grid-cols-[repeat(3,auto)] gap-y-10 lg:justify-between justify-start">
+        <div className="flex flex-col space-y-5 mx-8 lg:mx-0">
           <h3 className="text-xl font-semibold">Info</h3>
           <Link
             href="#"
@@ -41,7 +41,7 @@ function Footer({}: Props) {
             Terms of Service
           </Link>
         </div>
-        <div className="flex flex-col space-y-5 w-[70%] mx-auto">
+        <div className="flex flex-col space-y-5 w-[70%] lg:mx-auto mx-8">
           <h3 className="text-xl font-semibold">karakanani</h3>
           <p className="text-gray-600 leading-8">
             A small stationery and handmade gift shop based in California.
@@ -49,13 +49,13 @@ function Footer({}: Props) {
         </div>
         <Image
           src="/assets/footer-img.webp"
-          className="w-[200px]"
+          className="w-[200px] mx-auto lg:mx-0"
           alt=""
           width={300}
           height={300}
         />
 
-        <div className="col-span-3 flex justify-center">
+        <div className="col-span-1 lg:col-span-3 flex justify-center">
           <a href="/">
             <Image
               src="/assets/ig-icon.png"
@@ -67,8 +67,8 @@ function Footer({}: Props) {
           </a>
         </div>
 
-        <hr className="bg-black bg-opacity-20 col-span-3 h-[2px]" />
-        <div className="col-span-3 flex flex-col items-center space-y-4">
+        <hr className="bg-black bg-opacity-20 col-span-1 lg:col-span-3 h-[2px]" />
+        <div className="col-span-1 lg:col-span-3 flex flex-col items-center space-y-4">
           <div className="flex space-x-2">
             <Image
               src="/assets/apple-pay.webp"

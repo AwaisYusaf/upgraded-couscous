@@ -5,7 +5,7 @@ type Props = {};
 const sampleData = { imgUrl: "", soldOut: true, title: "", price: "" };
 function FeaturedProducts({}: Props) {
   return (
-    <section className="bg-custom-pink">
+    <section className="bg-custom-pink mt-8">
       <div className="w-[95%] lg:w-[85%] mx-auto flex flex-col">
         <h1 className="text-xl py-6">Featured: journaling sticker sheets ✨</h1>
 
