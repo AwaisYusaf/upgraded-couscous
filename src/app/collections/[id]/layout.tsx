@@ -1,3 +1,17 @@
+export async function generateStaticParams() {
+  const paths = [
+    "washi-tapes",
+    "prints",
+    "earrings",
+    "paper-products",
+    "stickers",
+  ];
+
+  return paths.map((obj) => ({
+    id: obj,
+  }));
+}
+
 export default function Layout({
   children,
   params,

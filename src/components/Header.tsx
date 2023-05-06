@@ -9,16 +9,16 @@ function Header({}: Props) {
   const [showAll, setShowAll] = useState(false);
   const dropdown = useRef(null);
 
-  if (document !== undefined) {
-    document.addEventListener("click", (e) => {
-      //@ts-ignore
-      if (e.target.id != "all-btn") {
-        if (dropdown.current) {
-          setShowAll(false);
-        }
-      }
-    });
-  }
+  // if (document) {
+  //   document.addEventListener("click", (e) => {
+  //     //@ts-ignore
+  //     if (e.target.id != "all-btn") {
+  //       if (dropdown.current) {
+  //         setShowAll(false);
+  //       }
+  //     }
+  //   });
+  // }
 
   function handleClick() {
     setShowAll(!showAll);
