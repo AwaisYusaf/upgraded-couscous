@@ -3,7 +3,7 @@ export default function Layout({
   params,
 }: {
   children: React.ReactNode;
-  params: { params: { id: string } };
+  params: { id: string };
 }) {
   let name = params.id;
   if (name.split("-").length > 1) {
