@@ -31,9 +31,10 @@ const filterData = (data: any[]) =>
         },
         title,
         price,
+        slug,
       },
     } = entry;
-    return { imgUrl: "https:" + url, title, price };
+    return { imgUrl: "https:" + url, title, price, slug };
   });
 
 async function getProducts(targetSlug: string) {
