@@ -1,91 +1,132 @@
-// "use client";
-
-// import { useEffect, useRef } from "react";
-// import { register } from "swiper/element/bundle";
-// import Image from "next/image";
-// register();
-
-// const MySwiper = () => {
-//   const swiperRef = useRef(null);
-
-//   useEffect(() => {
-//     const swiperContainer = swiperRef.current;
-//     const params = {
-//       navigation: true,
-//       pagination: true,
-//       //add this
-//       injectStyles: [
-//         `.swiper-slide{
-//             width:100%;
-//         }
-//           .swiper-button-next,
-//           .swiper-button-prev {
-//             background-color: white;
-//             background-position: center;
-//             background-color:transparent;
-//             background-size:15px;
-//             background-repeat: no-repeat;
-//             padding:0;
-//             border-radius: 100%;
-//             color: red;
-//           }
-
-//           .swiper-button-prev {
-//             background-image: url("/assets/slider-arrow.png");
-//             transform:rotate(90deg);
-//           }
-
-//           .swiper-button-next {
-//             background-image: url("/assets/slider-arrow.png");
-//           transform:rotate(270deg);
-//           }
-
-//           .swiper-button-next::after,
-//           .swiper-button-prev::after {
-//             content: "";
-//           }
-
-//           .swiper-pagination-bullet{
-//             width: 10px;
-//             height: 10px;
-//             background-color: red;
-//           }
-//       `,
-//       ],
-//     };
-
-//     Object.assign(swiperContainer, params);
-//     swiperContainer.initialize();
-//   }, []);
-
-//   return (
-//     <swiper-container ref={swiperRef} init="false" class="swiper">
-//       <swiper-slide class="swiper-slide">
-//         <Image
-//           src="/assets/sample.jpg"
-//           className="w-full"
-//           alt=""
-//           width={1200}
-//           height={800}
-//         />
-//       </swiper-slide>
-//       <swiper-slide class="swiper-slide">
-//         <Image src="/assets/sample.jpg" alt="" width={1200} height={800} />
-//       </swiper-slide>
-//       <swiper-slide class="swiper-slide">
-//         <Image src="/assets/sample.jpg" alt="" width={1200} height={800} />
-//       </swiper-slide>
-//     </swiper-container>
-//   );
-// };
-
-// export default MySwiper;
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import Swiper, { Pagination, Navigation } from "swiper";
+import Image from "next/image";
+import Card1 from "./SwiperSlides/Card1";
+import Card2 from "./SwiperSlides/Card2";
+import Card3 from "./SwiperSlides/Card3";
+// import Swiper styles
+import "swiper/css";
 
 type Props = {};
 
 function Slider({}: Props) {
-  return <div>Slider</div>;
+  const [swiper, setSwiper] = useState<any>(null);
+  const [autoPlay, setAutoPlay] = useState(false);
+  const [interval, setIntervalID] = useState<any>(null);
+
+  useEffect(() => {
+    let myswiper = new Swiper(".swiper", {
+      // Optional parameters
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+    });
+    setSwiper(myswiper);
+  }, []);
+  function updateInterval() {
+    if (!autoPlay) {
+      const i = setInterval(() => {
+        swiper.slideNext();
+      }, 2000);
+      setIntervalID(i);
+      setAutoPlay(true);
+    } else {
+      clearInterval(interval);
+      setAutoPlay(false);
+    }
+  }
+
+  return (
+    <div className="my-8 flex flex-col">
+      <div className="swiper mx-auto w-[97%] md:w-[90%] lg:w-[85%]">
+        <div className="swiper-wrapper">
+          <div className="swiper-slide" data-swiper-autoplay="2000">
+            <Card1 />
+          </div>
+          <div className="swiper-slide" data-swiper-autoplay="2000">
+            <Card2 />
+          </div>
+          <div className="swiper-slide" data-swiper-autoplay="2000">
+            <Card3 />
+          </div>
+        </div>
+        <div className="swiper-pagination"></div>
+
+        <div className="swiper-scrollbar"></div>
+      </div>
+
+      <div className="flex justify-center space-x-16 mt-4">
+        <div
+          className="swiper-button-prev"
+          onClick={() => {
+            if (swiper.slidePrev) {
+              swiper.slidePrev();
+            }
+          }}
+        >
+          <Image
+            src="/assets/slider-arrow.png"
+            width={40}
+            height={40}
+            alt=""
+            className="rotate-90 h-[20px] w-[20px] transition-all p-[5px] opacity:70 hover:opacity-100 hover:scale-150 hover:bg-gray-100 rounded-full cursor-pointer"
+          />
+        </div>
+        <button onClick={updateInterval}>
+          {autoPlay ? (
+            <Image
+              src="/assets/pause.png"
+              className="h-[20px] w-[20px] p-[5px] opacity-60 hover:opacity-100 hover:bg-gray-100 rounded-full cursor-pointer"
+              alt=""
+              width={40}
+              height={40}
+            />
+          ) : (
+            <Image
+              src="/assets/play.png"
+              className="h-[20px] w-[20px] p-[5px] opacity-60 hover:opacity-100 hover:bg-gray-100 rounded-full cursor-pointer"
+              alt=""
+              width={40}
+              height={40}
+            />
+          )}
+        </button>
+
+        <div
+          className="swiper-button-next"
+          onClick={() => {
+            if (swiper.slideNext) {
+              swiper.slideNext();
+            }
+          }}
+        >
+          <Image
+            src="/assets/slider-arrow.png"
+            width={40}
+            height={40}
+            alt=""
+            className="-rotate-90 h-[20px] w-[20px] transition-all p-[5px] opacity:70 hover:opacity-100 hover:scale-150 hover:bg-gray-100 rounded-full cursor-pointer"
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Slider;

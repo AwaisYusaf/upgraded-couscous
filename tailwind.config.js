@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,6 +16,7 @@ module.exports = {
       colors: {
         "custom-pink": "rgb(255, 233, 212)",
         "custom-pink-2": "#e6a685",
+        "hover-pink": "rgb(255, 223, 200)",
       },
     },
   },

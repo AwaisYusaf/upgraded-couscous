@@ -5,10 +5,8 @@ type Props = {};
 function ExclusiveAccess({}: Props) {
   return (
     <section className="flex flex-col items-center space-y-8 py-12">
-      <h1 className="text-4xl text-center  font-medium">
-        Get exclusive access
-      </h1>
-      <p className="text-center w-[90%] mx-auto lg:w-[50%]">
+      <h1 className="text-4xl text-center font-medium">Get exclusive access</h1>
+      <p className="text-center w-[90%] mx-auto text-lg opacity-80 lg:w-[50%]">
         Join the karakanani Patreon community! As a patron, you can receive
         monthly happy mail, view behind the scenes content, and get early access
         to this shops updates.

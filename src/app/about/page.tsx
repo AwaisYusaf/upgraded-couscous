@@ -5,10 +5,10 @@ const text = "";
 
 function About({}: Props) {
   return (
-    <main className="flex">
-      <div className="w-[60%] mx-auto">
-        <h1 className="my-6 text-5xl font-medium">About karakanani</h1>
-        <div className="grid grid-cols-3 gap-x-6">
+    <main className="flex mb-12 md:mb-6">
+      <div className="w-[90%] md:w-[80%] lg:w-[60%] mx-auto">
+        <h1 className="my-8 text-4xl">About karakanani</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 pt-8 border-t border-gray-200">
           <Image
             src="/assets/about1.avif"
             alt=""
@@ -16,7 +16,7 @@ function About({}: Props) {
             height={1000}
             className="mr-6 mb-6"
           />
-          <p className="col-span-2 tracking-wider leading-7">
+          <p className="col-span-1 lg:col-span-2 tracking-wider leading-7">
             Hi! My name is Kara and I am the owner and artist behind this little
             stationery and handmade shop based in Southern California! The name
             karakanani was inspired from an old nickname a family friend would
@@ -42,8 +42,8 @@ function About({}: Props) {
           has been a neat way to express myself —thankful for my mum and pops
           who encourage all things creative and share creative passions like me!
         </p>
-        <div className="grid grid-cols-3 gap-x-6">
-          <p className="col-span-2 tracking-wider leading-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6">
+          <p className="col-span-1 lg:col-span-2 tracking-wider leading-7">
             It is such a gift to share my favorite things, memories, and
             inspirations through art. Thank you for being a part of this dream
             to design for my own stationery shop. This shop also helps me in

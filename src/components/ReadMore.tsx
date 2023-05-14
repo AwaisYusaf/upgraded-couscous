@@ -15,7 +15,7 @@ function ReadMore({}: Props) {
         />
         <div className="lg:col-span-2  bg-[#9a883a] text-white flex flex-col lg:my-0 my-8 space-y-6 lg:pl-20 px-[10%] justify-center">
           <h3 className="text-2xl">Designed from my home studio</h3>
-          <p className="font-thin text-sm">
+          <p className="font-thin text-sm opacity-80 tracking-wider">
             LEARN MORE ABOUT THE ARTIST & STORY BEHIND THE SHOP
           </p>
           <button className="mr-auto px-8 py-3 rounded-full bg-white text-[#9a883a]">

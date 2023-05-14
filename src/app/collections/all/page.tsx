@@ -2,12 +2,12 @@ import Filter from "@/components/Filter";
 import ProductCard from "@/components/ProductCard";
 import React from "react";
 import { createClient } from "contentful";
-export const dynamic = "force-dynamic";
-type Props = {};
+
 const sampleData = { imgUrl: "", soldOut: true, title: "", price: "" };
 
+export const dynamic = "force-dynamic";
 export const metadata = {
-  title: "New Arrivals",
+  title: "All Products",
 };
 
 const space: string = process.env.CONTENTFUL_SPACE_ID!;
@@ -35,28 +35,17 @@ const filterData = (data: any[]) =>
     return { imgUrl: "https:" + url, title, price, slug };
   });
 
-async function getProducts(targetSlug: string) {
+async function getProducts() {
   const data = await contentfulClient.getEntries({
     content_type: "title",
   });
-
-  const targetData = data.items.filter((entry: any) => {
-    const {
-      fields: {
-        inventoryType: {
-          fields: { slug },
-        },
-      },
-    } = entry;
-    return slug == targetSlug;
-  });
-
-  return targetData;
+  return data.items;
 }
 
 async function Page() {
-  const data = await getProducts("new-arrival");
+  const data = await getProducts();
   const filteredData = filterData(data);
+
   if (filteredData.length == 0) {
     return (
       <h1 className="my-12 text-center text-4xl opacity-70">
@@ -67,7 +56,7 @@ async function Page() {
   return (
     <>
       <Filter data={{ productsCount: filteredData.length }} />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-8 my-10">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 my-10">
         {filteredData.map((entry: any, index: number) => {
           return <ProductCard key={index} data={entry} />;
         })}

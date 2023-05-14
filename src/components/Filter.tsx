@@ -1,7 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
-type Props = {};
+type Props = {
+  data: { productsCount: string | number };
+};
 
 function Button({ children, onClick }: any) {
   return (
@@ -15,7 +17,7 @@ function Button({ children, onClick }: any) {
   );
 }
 
-export default function Filter({}: Props) {
+export default function Filter({ data }: Props) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-4">
@@ -29,7 +31,9 @@ export default function Filter({}: Props) {
           <option value="featured">Featured</option>
           <option value="best-selling">Best selling</option>
         </select>
-        <p>14 products</p>
+        <p>
+          {data.productsCount} product{data.productsCount == 1 ? "" : ""}
+        </p>
       </div>
     </div>
   );

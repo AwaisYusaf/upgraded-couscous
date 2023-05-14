@@ -9,41 +9,41 @@ function Footer({}: Props) {
     <footer className="bg-custom-pink py-8">
       <div className="w-[95%] lg:w-[85%] lg:mx-auto mx-0 grid grid-cols-1 lg:grid-cols-[repeat(3,auto)] gap-y-10 lg:justify-between justify-start">
         <div className="flex flex-col space-y-5 mx-8 lg:mx-0">
-          <h3 className="text-xl font-semibold">Info</h3>
+          <h3 className="text-xl">Info</h3>
           <Link
-            href="#"
-            className="text-gray-600 hover:underline hover:text-black"
+            href="/about"
+            className="opacity-60 hover:underline hover:text-black"
           >
-            Search
+            About
           </Link>
           <Link
-            href="#"
-            className="text-gray-600 hover:underline hover:text-black "
+            href="/collections/all"
+            className="opacity-60 hover:underline hover:text-black "
           >
-            Contact
+            Collection
           </Link>
           <Link
-            href="#"
-            className="text-gray-600 hover:underline hover:text-black "
+            href="/faqs"
+            className="opacity-60 hover:underline hover:text-black "
           >
             FAQ
           </Link>
           <Link
             href="#"
-            className="text-gray-600 hover:underline hover:text-black "
+            className="opacity-60 hover:underline hover:text-black "
           >
             Privacy Policy
           </Link>
           <Link
             href="#"
-            className="text-gray-600 hover:underline hover:text-black"
+            className="opacity-60 hover:underline hover:text-black"
           >
             Terms of Service
           </Link>
         </div>
         <div className="flex flex-col space-y-5 w-[70%] lg:mx-auto mx-8">
-          <h3 className="text-xl font-semibold">karakanani</h3>
-          <p className="text-gray-600 leading-8">
+          <h3 className="text-xl">karakanani</h3>
+          <p className="opacity-60 leading-8">
             A small stationery and handmade gift shop based in California.
           </p>
         </div>
@@ -71,54 +71,46 @@ function Footer({}: Props) {
         <div className="col-span-1 lg:col-span-3 flex flex-col items-center space-y-4">
           <div className="flex space-x-2">
             <Image
-              src="/assets/apple-pay.webp"
+              src="/assets/payment-options/apple-pay.webp"
               width={40}
-              height={10}
+              height={30}
               alt=""
-              className="bg-white border border-black rounded h-[23px]"
+              className="bg-white rounded h-[21px]"
             />
 
             <Image
-              src="/assets/apple-pay.webp"
+              src="/assets/payment-options/gpay.jpg"
               width={40}
-              height={10}
+              height={30}
               alt=""
-              className="bg-white border border-black rounded h-[23px]"
+              className="bg-white rounded h-[21px]"
             />
 
             <Image
-              src="/assets/apple-pay.webp"
+              src="/assets/payment-options/mastercard.png"
               width={40}
-              height={10}
+              height={30}
               alt=""
-              className="bg-white border border-black rounded h-[23px]"
+              className="bg-white rounded h-[21px]"
             />
 
             <Image
-              src="/assets/apple-pay.webp"
+              src="/assets/payment-options/paypal.png"
               width={40}
-              height={10}
+              height={30}
               alt=""
-              className="bg-white border border-black rounded h-[23px]"
+              className="bg-white rounded h-[21px]"
             />
 
             <Image
-              src="/assets/apple-pay.webp"
+              src="/assets/payment-options/visa.jpg"
               width={40}
-              height={10}
+              height={30}
               alt=""
-              className="bg-white border border-black rounded h-[23px]"
-            />
-
-            <Image
-              src="/assets/apple-pay.webp"
-              width={40}
-              height={10}
-              alt=""
-              className="bg-white border border-black rounded h-[23px]"
+              className="bg-white rounded h-[21px]"
             />
           </div>
-          <p className="text-gray-500 text-xs">© 2023, karakanani</p>
+          <p className="opacity-80">© 2023, karakanani</p>
         </div>
       </div>
     </footer>
