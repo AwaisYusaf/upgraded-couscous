@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 type Props = {};
 const text = "";
+export const metadata = {
+  title: "About",
+};
 
 function About({}: Props) {
   return (

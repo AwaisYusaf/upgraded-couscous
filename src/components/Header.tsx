@@ -14,13 +14,48 @@ type Props = any;
 
 function Header({}: Props) {
   const [showAll, setShowAll] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   function handleClick() {
     setShowAll(false);
   }
 
   return (
-    <header className="relative z-50" onMouseLeave={() => setShowAll(false)}>
+    <header className="relative z-40" onMouseLeave={() => setShowAll(false)}>
+      <div
+        className={`fixed p-10 transition duration-500 w-[100vw] h-[100vh] bg-white z-50 ${
+          showMobileMenu ? "transform -left-0" : "transform -left-[2500px]"
+        }`}
+      >
+        <div className="flex">
+          <button
+            className="text-black ml-auto text-3xl font-semibold"
+            onClick={() => setShowMobileMenu(false)}
+          >
+            X
+          </button>
+        </div>
+        <div className="flex flex-col space-y-4 mt-5 text-xl tracking-wider">
+          <Link onClick={() => setShowMobileMenu(false)} href="/">
+            Home
+          </Link>
+          <Link onClick={() => setShowMobileMenu(false)} href="/new-arrival">
+            New
+          </Link>
+          <Link onClick={() => setShowMobileMenu(false)} href="#">
+            All
+          </Link>
+          <Link onClick={() => setShowMobileMenu(false)} href="/sale">
+            Sale
+          </Link>
+          <Link onClick={() => setShowMobileMenu(false)} href="/about">
+            About
+          </Link>
+          <Link onClick={() => setShowMobileMenu(false)} href="/faqs">
+            FAQ
+          </Link>
+        </div>
+      </div>
       <div className="bg-custom-pink transition-all hover:bg-hover-pink flex justify-center items-center cursor-pointer space-x-5 py-2 shadow shadow-gray-300">
         <p className="text-sm">
           EU & UK customers! Please visit my Etsy shop to order.
@@ -43,6 +78,7 @@ function Header({}: Props) {
             alt=""
             width={30}
             height={30}
+            onClick={() => setShowMobileMenu(true)}
           />
           <Image
             src="/assets/search-black.png"
