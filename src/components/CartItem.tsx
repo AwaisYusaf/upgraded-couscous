@@ -1,48 +1,48 @@
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-function CartItem({ data }: any) {
+function CartItem({ data, deleteItem, update }: any) {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="flex my-10">
+    <div className="flex py-5 border-b border-gray-300">
       <div className="flex flex-grow">
         <Image
           src={data.imgUrl}
           alt=""
           width="300"
           height="300"
-          className="w-[150px] h-[150px] object-cover mr-10"
+          className="w-[50px] h-[50px] md:w-[100px] md:h-[100px] lg:w-[150px] lg:h-[150px] object-cover mr-1 lg:mr-10"
         />
         <div>
-          <h2 className="tracking-wider">{data.title}</h2>
+          <Link href={`/products/${data.slug}`} className="tracking-wider">
+            {data.title}
+          </Link>
           <p className="opacity-70">${data.price}</p>
         </div>
       </div>
 
-      <div className="mr-24 flex items-center h-fit space-x-4">
-        <div className="custom-number-input h-12 w-32">
-          <div className="flex flex-row h-12 w-full rounded relative bg-transparent mt-1 shadow ring-[1px] ring-gray-200">
+      <div className="mr-12 md:mr-20 lg:mr-24 flex items-center h-fit space-x-4">
+        <div className="custom-number-input h-fit lg:h-12 w-12 lg:w-32">
+          <div className="flex flex-col-reverse items-center lg:flex-row h-fit lg:h-12 w-12 lg:w-full rounded relative bg-transparent shadow ring-[1px] ring-gray-200">
             <button
               data-action="decrement"
-              className="  h-full w-20 rounded-l cursor-pointer outline-none"
-              onClick={() => setQuantity(quantity > 2 ? quantity - 1 : 1)}
+              className="  h-full w-fit lg:w-20 rounded-l cursor-pointer outline-none"
+              onClick={() => update(data.slug, "DECREMENT")}
             >
               <span className="m-auto text-2xl font-thin">−</span>
             </button>
             <input
               type="number"
-              className="focus:outline-none text-center w-full  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+              className="focus:outline-none text-center w-full font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
               name="custom-input-number"
-              value={quantity}
-              onChange={(e) =>
-                setQuantity(+e.target.value < 0 ? quantity : +e.target.value)
-              }
+              value={data.quantity}
             ></input>
             <button
               data-action="increment"
-              className=" h-full w-20 rounded-r cursor-pointer"
-              onClick={() => setQuantity(quantity + 1)}
+              className=" h-full w-fit lg:w-20 rounded-r cursor-pointer"
+              onClick={() => update(data.slug, "INCREMENT")}
             >
               <span className="m-auto text-2xl font-thin">+</span>
             </button>
@@ -54,11 +54,12 @@ function CartItem({ data }: any) {
           height={20}
           src="/assets/delete.png"
           className="h-fit opacity-75 cursor-pointer"
+          onClick={() => deleteItem(data.slug)}
         />
       </div>
 
       <div>
-        <p className="mt-4 w-[40px]">${quantity * +data.price}</p>
+        <p className="mt-4 w-[40px]">${data.quantity * +data.price}</p>
       </div>
     </div>
   );

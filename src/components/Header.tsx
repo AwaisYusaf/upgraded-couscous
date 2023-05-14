@@ -36,10 +36,17 @@ function Header({}: Props) {
       </div>
 
       <div className="flex justify-between items-center py-2 w-[85%] mx-auto">
-        <div>
+        <div className="flex items-center space-x-2">
+          <Image
+            src="/assets/menu.png"
+            className={`block md:hidden w-[22px] hover:scale-110 cursor-pointer`}
+            alt=""
+            width={30}
+            height={30}
+          />
           <Image
             src="/assets/search-black.png"
-            className="w-[22px] hover:scale-110 cursor-pointer"
+            className={`hidden md:block w-[22px] hover:scale-110 cursor-pointer`}
             alt=""
             width={30}
             height={30}

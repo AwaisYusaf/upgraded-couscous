@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useContext, createContext, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
+
 import { type CartItem } from "@/lib/cartContext";
 import YouMayLikeSection from "@/components/YouMayLikeSection";
 import EmptyCart from "@/components/EmptyCart";
 import FilledCart from "@/components/FilledCart";
 
 type Props = {};
+
 const CartContext = createContext<any>([]);
 
 function Cart({}: Props) {
@@ -36,20 +36,22 @@ function Cart({}: Props) {
   }
 
   return (
-    <section className="flex flex-col items-center">
-      {checkingOut ? (
-        <h1>Checking out...</h1>
-      ) : (
-        <div className="w-[95%] lg:w-[85%]">
-          {cartData.length == 0 ? (
-            <EmptyCart />
-          ) : (
-            <FilledCart data={{ cartData, setCartData }} />
-          )}
-          <YouMayLikeSection />
-        </div>
-      )}
-    </section>
+    <>
+      <section className="flex flex-col items-center">
+        {checkingOut ? (
+          <h1>Checking out...</h1>
+        ) : (
+          <div className="w-[95%] lg:w-[85%]">
+            {cartData.length == 0 ? (
+              <EmptyCart />
+            ) : (
+              <FilledCart data={{ cartData, setCartData }} />
+            )}
+            <YouMayLikeSection />
+          </div>
+        )}
+      </section>
+    </>
   );
 }
 

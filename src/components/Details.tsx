@@ -1,6 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FsLightbox from "fslightbox-react";
+import ModalCartItem from "./ModalCartItem";
+import Link from "next/link";
 type Props = any;
 const images = [
   "https://images.pexels.com/photos/2233348/pexels-photo-2233348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -12,6 +14,7 @@ const images = [
 const videos = ["video.mp4"];
 
 const filterData = (data: any) => {
+  console.log(data);
   const {
     fields: {
       primaryImage: {
@@ -23,6 +26,7 @@ const filterData = (data: any) => {
       price,
       slug,
       images,
+      description,
     },
   } = data;
   const secondaryImages = images.map((image: any) => {
@@ -41,11 +45,27 @@ function ProductDetails({ data }: Props) {
   const [quantity, setQuantity] = useState(0);
   const filteredData = filterData(data);
   const [toggle, setToggle] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [cartData, setCartData] = useState<any>([]);
 
+  useEffect(() => {
+    updateCart();
+  }, []);
+
+  function updateCart() {
+    try {
+      const res = localStorage.getItem("cart");
+      if (res) {
+        const data = JSON.parse(res);
+        setCartData(data.items);
+      }
+    } catch (e) {}
+  }
   function handleAddToCart() {
     try {
       const { imgUrl, title, price, slug } = filteredData;
       const res = localStorage.getItem("cart");
+      console.log("Add to cart fn:", res);
       if (res) {
         let cart = JSON.parse(res);
         //Check whether item is not in cart..
@@ -58,18 +78,61 @@ function ProductDetails({ data }: Props) {
             items: [...cart.items, { imgUrl, title, price, slug, quantity: 1 }],
           };
           localStorage.setItem("cart", JSON.stringify(updatedCart));
-        } else {
         }
       } else {
         const cart = { items: [{ imgUrl, title, price, slug, quantity: 1 }] };
         localStorage.setItem("cart", JSON.stringify(cart));
       }
+      updateCart();
+      setAddedToCart(true);
     } catch (err) {}
   }
 
   return (
-    <section className="flex flex-col lg:flex-row lg:space-x-8 lg:px-12 my-12">
+    <section className="flex flex-col relative lg:flex-row lg:space-x-8 lg:px-12 my-12">
       <FsLightbox toggler={toggle} sources={selected} />
+
+      <div
+        className={`fixed z-50 right-5 top-10 w-fit h-fit ${
+          addedToCart ? "block" : "hidden"
+        }`}
+      >
+        <div className="relative w-full max-w-md max-h-full">
+          <div className="relative bg-white rounded-lg shadow-lg shadow-custom-pink dark:bg-gray-700">
+            <div className="px-6 py-4 flex justify-between items-center bg-custom-pink-2 border-b rounded-t dark:border-gray-600">
+              <h3 className="text-base  font-semibold text-white lg:text-xl dark:text-white">
+                Cart
+              </h3>
+              <button
+                className="text-white"
+                onClick={() => setAddedToCart(false)}
+              >
+                X
+              </button>
+            </div>
+
+            <div className="p-6">
+              <ul className="my-4 space-y-3">
+                <li>
+                  {cartData
+                    ? cartData.map((item: any, index: any) => {
+                        return <ModalCartItem key={index} data={item} />;
+                      })
+                    : ""}
+                </li>
+              </ul>
+              <div>
+                <Link
+                  href="/cart"
+                  className="inline-flex items-center text-xs font-normal text-gray-500 hover:underline dark:text-gray-400"
+                >
+                  Proceed checkout
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="basis-2/3 flex flex-row-reverse lg:flex-row lg:px-2 space-x-4">
         <div className="w-full">
@@ -137,9 +200,14 @@ function ProductDetails({ data }: Props) {
         <div />
         <button
           onClick={handleAddToCart}
-          className="rounded-full group text-center ring-gray-400 hover:ring-black hover:ring-2 transition-all ring-1 py-3 flex items-center"
+          disabled={addedToCart}
+          className={`rounded-full group text-center ring-gray-400 transition-all ring-1 py-3 ${
+            addedToCart
+              ? "cursor-not-allowed opacity-60"
+              : "cursor-pointer hover:ring-black hover:ring-2"
+          }`}
         >
-          <p className="flex-grow transition duration-200">Add to Cart</p>
+          {addedToCart ? "Added" : "Add to Cart"}
         </button>
         <button className="w-full text-center text-white bg-black py-3 text-lg font-bold hidden">
           Buy it now

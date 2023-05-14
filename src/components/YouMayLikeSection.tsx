@@ -21,6 +21,7 @@ function YouMayLikeSection() {
   for (let i = 0; i < (res.length > 4 ? 4 : res.length); i++) {
     products.push(<YouMayLikeCard key={i} data={res[i]} />);
   }
+
   return (
     <div className="my-8">
       <h2 className="my-4 text-3xl">You may also like</h2>
