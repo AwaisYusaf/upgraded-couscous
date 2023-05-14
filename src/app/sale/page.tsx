@@ -7,6 +7,7 @@ type Props = {};
 const sampleData = { imgUrl: "", soldOut: true, title: "", price: "" };
 
 //Nextjs config
+export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Sale🔥",
 };
