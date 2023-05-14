@@ -32,26 +32,50 @@ function Header({}: Props) {
             className="text-black ml-auto text-3xl font-semibold"
             onClick={() => setShowMobileMenu(false)}
           >
-            X
+            <Image src="/assets/cross.png" alt="" width={30} height={30} />
           </button>
         </div>
-        <div className="flex flex-col space-y-4 mt-5 text-xl tracking-wider">
-          <Link onClick={() => setShowMobileMenu(false)} href="/">
+        <div className="flex flex-col mt-5 text-xl tracking-wider">
+          <Link
+            className="border-b py-3 "
+            onClick={() => setShowMobileMenu(false)}
+            href="/"
+          >
             Home
           </Link>
-          <Link onClick={() => setShowMobileMenu(false)} href="/new-arrival">
+          <Link
+            className="border-b py-3 "
+            onClick={() => setShowMobileMenu(false)}
+            href="/new-arrival"
+          >
             New
           </Link>
-          <Link onClick={() => setShowMobileMenu(false)} href="#">
+          <Link
+            className="border-b py-3 "
+            onClick={() => setShowMobileMenu(false)}
+            href="#"
+          >
             All
           </Link>
-          <Link onClick={() => setShowMobileMenu(false)} href="/sale">
+          <Link
+            className="border-b py-3 "
+            onClick={() => setShowMobileMenu(false)}
+            href="/sale"
+          >
             Sale
           </Link>
-          <Link onClick={() => setShowMobileMenu(false)} href="/about">
+          <Link
+            className="border-b py-3 "
+            onClick={() => setShowMobileMenu(false)}
+            href="/about"
+          >
             About
           </Link>
-          <Link onClick={() => setShowMobileMenu(false)} href="/faqs">
+          <Link
+            className="border-b py-2"
+            onClick={() => setShowMobileMenu(false)}
+            href="/faqs"
+          >
             FAQ
           </Link>
         </div>

@@ -29,7 +29,7 @@ function HomeSectionOne({ data }: Props) {
       }`}
     >
       <div className="w-[95%] lg:w-[85%] mx-auto flex flex-col">
-        <h1 className="text-3xl text-black opacity-70 py-6">
+        <h1 className="text-xl md:text-2xl lg:text-3xl text-black opacity-70 py-6">
           Featured: Video Games Inspired ✨
         </h1>
 
