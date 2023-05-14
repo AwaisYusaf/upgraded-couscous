@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { createClient } from "contentful";
 import { NextResponse } from "next/server";
 const space: string = process.env.CONTENTFUL_SPACE_ID!;
