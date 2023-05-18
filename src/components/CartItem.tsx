@@ -1,10 +1,7 @@
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 function CartItem({ data, deleteItem, update }: any) {
-  const [quantity, setQuantity] = useState(1);
-
   return (
     <div className="flex py-5 border-b border-gray-300">
       <div className="flex flex-grow">

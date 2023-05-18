@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Header from "../components/Header";
 import Head from "next/head";
 import "./globals.css";
+import CartProvider from "@/lib/CartProvider";
 
 // export const metadata = {
 //   title: "Create Next App",

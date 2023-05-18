@@ -27,7 +27,7 @@ function ProductCard({ data }: { data: Props }) {
       {/* <p className="absolute top-[65%] text-white text-xs bg-red-950 bg-opacity-50 px-6 py-2 rounded-full left-2">
         Sold out
       </p> */}
-      <h2 className="group-hover:underline tracking-wide opacity-80 text-center">
+      <h2 className="group-hover:underline tracking-wide opacity-80 text-center flex-grow">
         {data.title}
       </h2>
       <h3 className="text-center tracking-wide opacity-80">

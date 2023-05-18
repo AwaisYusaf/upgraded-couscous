@@ -94,7 +94,7 @@ function Header({}: Props) {
         />
       </div>
 
-      <div className="flex justify-between items-center py-2 w-[85%] mx-auto">
+      <div className="flex justify-between items-center py-2 w-[95%] md:w-[90%] lg:w-[85%] mx-auto">
         <div className="flex items-center space-x-2">
           <Image
             src="/assets/menu.png"

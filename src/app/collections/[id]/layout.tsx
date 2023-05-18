@@ -11,7 +11,7 @@ export default function Layout({
     .join(" ");
   return (
     <main className="flex justify-center">
-      <div className="w-[85%]">
+      <div className="w-[96%] md:w-[90%] lg:w-[85%]">
         <h1 className="text-4xl my-10">{title}</h1>
         {children}
       </div>

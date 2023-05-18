@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Link from "next/link";
 import CartItem from "./CartItem";
 
 function FilledCart({ data }: { data: any }) {
+  const [checkingOut, setCheckingOut] = useState(false);
   const { cartData, setCartData } = data;
   let totalBill = 0;
   cartData.forEach((item: any) => {
@@ -30,6 +32,20 @@ function FilledCart({ data }: { data: any }) {
     });
     setCartData(updatedCart);
     localStorage.setItem("cart", JSON.stringify({ items: updatedCart }));
+  }
+  async function handleCheckout() {
+    setCheckingOut(true);
+    try {
+      const cart = localStorage.getItem("cart");
+      if (cart) {
+        const res = await fetch("/api/checkout", {
+          method: "POST",
+          body: cart,
+        });
+        const data = await res.json();
+        window.location.href = data.url;
+      }
+    } catch (err) {}
   }
 
   return (
@@ -69,8 +85,11 @@ function FilledCart({ data }: { data: any }) {
         <p className="text-sm opacity-70">
           Taxes and shipping calculated at checkout
         </p>
-        <button className="text-white bg-custom-pink-2 px-12 tracking-widest py-3 rounded-full my-6 hover:ring-2 ring-custom-pink-2 transition-all">
-          Check out
+        <button
+          onClick={handleCheckout}
+          className="text-white bg-custom-pink-2 px-12 tracking-widest py-3 rounded-full my-6 hover:ring-2 ring-custom-pink-2 transition-all"
+        >
+          {checkingOut ? "Checking out... Please wait" : "Check out"}
         </button>
       </div>
     </div>
