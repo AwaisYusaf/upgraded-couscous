@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
             line_items: items,
             currency: "usd",
             mode: 'payment',
-            success_url: `http://localhost:3000/checkout?status=success`,
-            cancel_url: `http://localhost:3000/checkout?status=failed`,
+            success_url: `${process.env.APP_BASE_URL}/checkout?status=success`,
+            cancel_url: `${process.env.APP_BASE_URL}/checkout?status=failed`,
             billing_address_collection: "required",
         });
         return NextResponse.json({ url: session.url });
